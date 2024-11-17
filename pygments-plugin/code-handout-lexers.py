@@ -1,3 +1,4 @@
+import copy
 import re
 
 from pygments.lexer import RegexLexer, bygroups, \
@@ -20,7 +21,7 @@ class ImprovedCSharpLexer(RegexLexer):
     flags = re.MULTILINE | re.DOTALL
 
     token_variants = True
-    tokens = {**CSharpLexer.tokens} # deep copy
+    tokens = copy.deepcopy(CSharpLexer.tokens)
 
     for levelname, cs_ident in CSharpLexer.levels.items():
         context = tokens[levelname]['root']

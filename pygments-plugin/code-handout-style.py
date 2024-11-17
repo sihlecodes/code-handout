@@ -1,25 +1,6 @@
 from pygments.style import Style
 from pygments.token import (Token, Comment, Error, Generic, Name, Number, Operator,
                             String, Text, Whitespace, Keyword)
-
-# BLUE_LIGHT = '#0080ff'
-# BLUE = '#2c5dcd'
-# GREEN = '#00cc66'
-# GREEN_LIGHT = '#ccffcc'
-# GREEN_NEON = '#00cc00'
-# GREY = '#aaaaaa'
-# GREY_LIGHT = ''
-# GREY_DARK = ''
-# PURPLE = '#5f20ff'
-# RED = '#cc0000'
-# RED_DARK = '#c5060b'
-# RED_LIGHT = '#ffcccc'
-# RED_BRIGHT = '#ff0000'
-# WHITE = '#ffffff'
-# TURQUOISE = '#318495'
-# ORANGE = '#ff8000'
-# HOTPINK = '#ff4370'
-
 # BACKGROUND    = '#120f17'
 # TEXT          = '#cdbccf'
 # WHITESPACE    = '#cdbccf'
