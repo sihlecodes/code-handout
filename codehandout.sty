@@ -8,7 +8,10 @@
 
 \newcommand{\customtitle}{Default Title}
 \newcommand{\sethandouttitle}[1]{\renewcommand{\customtitle}{#1}}
-\newcommand{\addtitlesection}{\section*{\customtitle}}
+
+\AtBeginDocument {
+	\section*{\customtitle}
+}
 
 \newcommand{\smallfont}{
 \fontsize{8}{11}\selectfont
@@ -39,11 +42,11 @@
 % \AtBeginEnvironment{snugshade*}{\vspace{-\FrameSep}}
 % \AfterEndEnvironment{snugshade*}{\vspace{-\FrameSep}}
 
-\definecolor{codebgcolor}{HTML}{f8f8fa}
+\definecolor{background}{HTML}{fafbfc}
 
-\usemintedstyle{\customtheme}
 \setminted{
-	bgcolor=codebgcolor,
+	style=handout,
+	bgcolor=background,
 	bgcolorpadding=1.2em,
 	tabsize=3,
 	samepage=true}
