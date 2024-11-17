@@ -1,5 +1,7 @@
 # Code Handout
-A Latex template for creating beautiful programming notes and exercise sheets.
+A Latex template for creating beautiful programming notes and exercise sheets. Here's an example! :D
+
+<img src="screenshots/screenshot_1.png" alt="Screenshot 1" width="500">
 
 ## Installation
 Copy the `code-handout.sty` to your local latex packages folder.
