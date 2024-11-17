@@ -12,13 +12,13 @@ dependencies = ["pygments"]
 packages = ["."]
 
 [project.entry-points."pygments.lexers"]
-csharp_handout = "handout_lexers:ImprovedCSharpLexer"
+csharp_handout = "code-handout-lexers:ImprovedCSharpLexer"
 
 # [project.entry-points."pygments.formatters"]
-# handout = "handout_formatter:HandoutFormatter"
+# handout = "code-handout-formatter:HandoutFormatter"
 
 [project.entry-points."pygments.styles"]
-handout = "handout_style:HandoutStyle"
+handout = "code-handout-style:HandoutStyle"
 
 # [project.entry-points."pygments.filters"]
-# handout = "handout_filter:HandoutFilter"
+# handout = "code-handout-filter:HandoutFilter"
