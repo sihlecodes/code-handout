@@ -1,0 +1,59 @@
+\ProvidesPackage{codehandout}
+\usepackage{helvet}
+\usepackage[svgnames]{xcolor}
+\usepackage{minted}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
+
+\newcommand{\customtitle}{Default Title}
+\newcommand{\sethandouttitle}[1]{\renewcommand{\customtitle}{#1}}
+
+\AtBeginDocument {
+	\section*{\customtitle}
+}
+
+\newcommand{\smallfont}{
+\fontsize{8}{11}\selectfont
+}
+
+\fancyfootoffset[lhr]{8mm}
+
+\newcommand{\customfooter}{
+	\fancyhf{} % clear all header and footer fields
+	\fancyfoot[R]{\smallfont \textcolor{gray}{\thepage}}
+	\fancyfoot[L]{\smallfont \textcolor{gray}{SN Mhlongo, 2024 }}
+}
+
+\fancypagestyle{first} {\customfooter}
+\fancypagestyle{rest}{
+	\customfooter
+	\fancyhead[L]{\smallfont \textcolor{gray}{\customtitle}}
+	\fancyfoot[L]{}
+}
+
+\thispagestyle{first}
+\pagestyle{rest}
+
+\renewcommand{\listingscaption}{}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\headrulewidth}{0pt}
+
+% \AtBeginEnvironment{snugshade*}{\vspace{-\FrameSep}}
+% \AfterEndEnvironment{snugshade*}{\vspace{-\FrameSep}}
+
+\definecolor{background}{HTML}{fafbfc}
+
+\setminted{
+	style=handout,
+	bgcolor=background,
+	bgcolorpadding=1.2em,
+	tabsize=3,
+	samepage=true}
+
+% reduce space above captions
+\setlength{\abovecaptionskip}{-6.5pt} 
+
+% remove numbering from minted captions
+\DeclareCaptionLabelFormat{nolabel}{}
+\captionsetup[listing]{labelformat=nolabel, justification=raggedright, singlelinecheck=false, size=small, font={color=gray}}
