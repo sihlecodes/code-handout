@@ -15,12 +15,12 @@ def extend_at(index, self, elements):
 
 class ImprovedCSharpLexer(RegexLexer):
     name = 'CSharp Lexer extras'
-    aliases = ['csx']
+    aliases = ['csx', 'csharpx']
     filenames = []
     flags = re.MULTILINE | re.DOTALL
 
     token_variants = True
-    tokens = CSharpLexer.tokens
+    tokens = {**CSharpLexer.tokens} # deep copy
 
     for levelname, cs_ident in CSharpLexer.levels.items():
         context = tokens[levelname]['root']
