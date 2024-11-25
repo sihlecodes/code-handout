@@ -1,3 +1,4 @@
+import copy
 import re
 
 from pygments.lexer import RegexLexer, bygroups, \
@@ -8,18 +9,25 @@ from pygments.util import get_choice_opt
 
 from pygments.lexers.dotnet import CSharpLexer
 
+def extend_at(index, self, elements):
+    for i, e in enumerate(elements):
+        self.insert(index + i, e)
+
 
 class ImprovedCSharpLexer(RegexLexer):
     name = 'CSharp Lexer extras'
-    aliases = ['csx']
+    aliases = ['csx', 'csharpx']
     filenames = []
     flags = re.MULTILINE | re.DOTALL
 
     token_variants = True
-    tokens = CSharpLexer.tokens
+    tokens = copy.deepcopy(CSharpLexer.tokens)
 
     for levelname, cs_ident in CSharpLexer.levels.items():
-        tokens[levelname]['root'] = tokens[levelname]['root'][:-1] + [
+        context = tokens[levelname]['root']
+        context.insert(1, (r'"', String, 'string'))
+
+        extend_at(len(context)-1, context, [
             (fr'({cs_ident})([\[\]\?]*)(\s+)({cs_ident})(\s*)(;)',
              bygroups(Name.Class, Punctuation, Whitespace,
                       Name, Whitespace, Punctuation)),
@@ -30,7 +38,13 @@ class ImprovedCSharpLexer(RegexLexer):
 
             (fr'({cs_ident})(\s*)(\()',
              bygroups(Name.Function, Whitespace, Punctuation)),
-        ] + [tokens[levelname]['root'][-1]]
+        ])
+
+        tokens[levelname]['string'] = [
+            (r'\\.', String.Escape),
+            (r'[^\\"]', String),
+            (r'"', String, '#pop'),
+        ]
 
     def __init__(self, **options):
         level = get_choice_opt(options, 'unicodelevel', list(self.tokens),
