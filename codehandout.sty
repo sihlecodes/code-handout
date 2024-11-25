@@ -6,11 +6,14 @@
 \usepackage{fancyhdr}
 \usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
 
-\newcommand{\customtitle}{Default Title}
-\newcommand{\sethandouttitle}[1]{\renewcommand{\customtitle}{#1}}
+\newcommand{\handouttitle}{Title}
+\newcommand{\sethandouttitle}[1]{\renewcommand{\handouttitle}{#1}}
+
+\newcommand{\handoutauthor}{Author}
+\newcommand{\sethandoutauthor}[1]{\renewcommand{\handoutauthor}{#1}}
 
 \AtBeginDocument {
-	\section*{\customtitle}
+	\section*{\handouttitle}
 }
 
 \newcommand{\smallfont}{
@@ -22,13 +25,13 @@
 \newcommand{\customfooter}{
 	\fancyhf{} % clear all header and footer fields
 	\fancyfoot[R]{\smallfont \textcolor{gray}{\thepage}}
-	\fancyfoot[L]{\smallfont \textcolor{gray}{SN Mhlongo, 2024 }}
+	\fancyfoot[L]{\smallfont \textcolor{gray}{\handoutauthor}}
 }
 
 \fancypagestyle{first} {\customfooter}
 \fancypagestyle{rest}{
 	\customfooter
-	\fancyhead[L]{\smallfont \textcolor{gray}{\customtitle}}
+	\fancyhead[L]{\smallfont \textcolor{gray}{\handouttitle}}
 	\fancyfoot[L]{}
 }
 
