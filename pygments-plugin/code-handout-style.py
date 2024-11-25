@@ -1,76 +1,84 @@
 from pygments.style import Style
-from pygments.token import (Comment, Error, Generic, Name, Number, Operator,
+from pygments.token import (Token, Comment, Error, Generic, Name, Number, Operator,
                             String, Text, Whitespace, Keyword)
+# BACKGROUND    = '#120f17'
+# TEXT          = '#cdbccf'
+# WHITESPACE    = '#cdbccf'
+# COMMENT       = '#88788f'
+# FUNCTION      = '#5f4d8c'
+# TYPE          = '#ffc354'
+# PRIMATIVE     = '#ffc354'
+# KEYWORD       = '#ff505d'
+# STRING        = '#b897ff'
+# NUMBER        = '#ff505d'
 
-BLUE_LIGHT = '#0080ff'
-BLUE = '#2c5dcd'
-GREEN = '#00cc66'
-GREEN_LIGHT = '#ccffcc'
-GREEN_NEON = '#00cc00'
-GREY = '#aaaaaa'
-GREY_LIGHT = '#cbcbcb'
-GREY_DARK = '#4d4d4d'
-PURPLE = '#5f20ff'
-RED = '#cc0000'
-RED_DARK = '#c5060b'
-RED_LIGHT = '#ffcccc'
-RED_BRIGHT = '#ff0000'
-WHITE = '#ffffff'
-TURQUOISE = '#318495'
-ORANGE = '#ff8000'
-HOTPINK = '#ff4370'
-GREY = '#88788f'
-BACKGROUND = '#f8f8fb'
+# UNDEFINED     = '#ff0000'
+# STRING_ESCAPE = UNDEFINED
+# ATTRIBUTE     = UNDEFINED
+# STRING_OTHER  = UNDEFINED
+# TAG           = UNDEFINED
+# OPERATOR      = UNDEFINED
+
+BACKGROUND    = '#fafbfc'
+TEXT          = '#5d6165'
+WHITESPACE    = '#cdbccf'
+COMMENT       = '#abaeb1'
+FUNCTION      = '#e1af52'
+TYPE          = '#669de0'
+PRIMATIVE     = '#e98d48'
+KEYWORD       = '#e98d48'
+STRING        = '#91b138'
+STRING_ESCAPE = '#77bca8'
+NUMBER        = '#9872cd'
+OPERATOR      = '#e98d48'
+
+UNDEFINED     = '#ff0000'
+ATTRIBUTE     = UNDEFINED
+STRING_OTHER  = UNDEFINED
+TAG           = UNDEFINED
 
 
+# hello world
 class HandoutStyle(Style):
     background_color = BACKGROUND
+    highlight_color = TEXT
 
     styles = {
-        Comment: f'{GREY}',
+        Token: TEXT,
+
+        Comment: f'{COMMENT}',
         Comment.Preproc: 'noitalic',
         Comment.Special: 'bold',
 
-        Error: f'bg:{RED} {WHITE}',
+        Generic: TEXT,
+        Error: f'bg:#ff0000 #ffffff',
 
-        Generic.Deleted: f'border:{RED_DARK} bg:{RED_LIGHT}',
-        Generic.Emph: 'italic',
-        Generic.Error: RED_BRIGHT,
-        Generic.Heading: f'bold {BLUE}',
-        Generic.Inserted: f'border:{GREEN_NEON} bg:{GREEN_LIGHT}',
-        Generic.Output: GREY,
-        Generic.Prompt: f'bold {BLUE}',
-        Generic.Strong: 'bold',
-        Generic.Subheading: f'bold {BLUE}',
-        Generic.Traceback: RED_DARK,
-
-        Keyword: f'{BLUE_LIGHT}',
+        Keyword: f'{KEYWORD}',
         Keyword.Pseudo: 'nobold',
-        Keyword.Type: PURPLE,
+        Keyword.Type: PRIMATIVE,
 
-        Name.Attribute: f'italic {BLUE}',
-        Name.Builtin: f'bold {PURPLE}',
-        Name.Class: f'{HOTPINK}',
-        Name.Constant: TURQUOISE,
-        Name.Decorator: f'bold {ORANGE}',
-        Name.Entity: f'bold {PURPLE}',
-        Name.Exception: f'bold {PURPLE}',
-        Name.Function: f'{ORANGE}',
-        Name.Function.Magic: f'{ORANGE}',
-        Name.Tag: f'bold {BLUE}',
+        Name.Attribute: f'italic {ATTRIBUTE}',
+        Name.Builtin: f'{FUNCTION}',
+        Name.Class: f'{TYPE}',
+        Name.Constant: TYPE,
+        Name.Entity: f'{TYPE}',
+        # Name.Exception: f'bold {PURPLE}',
+        Name.Function: f'{FUNCTION}',
+        Name.Function.Magic: f'{FUNCTION}',
+        Name.Tag: f'{TAG}',
 
-        Number: f'bold {PURPLE}',
+        Number: f'{NUMBER}',
 
-        Operator: BLUE,
-        Operator.Word: 'bold',
+        Operator: OPERATOR,
+        # Operator.Word: 'bold',
 
-        String: GREEN,
+        String: STRING,
         String.Doc: 'italic',
-        String.Escape: f'bold {RED_DARK}',
-        String.Other: TURQUOISE,
-        String.Symbol: f'bold {RED_DARK}',
+        String.Escape: f'{STRING_ESCAPE}',
+        String.Other: STRING_OTHER,
+        String.Symbol: f'bold {STRING_OTHER}',
 
-        Text: GREY_DARK,
+        Text: TEXT,
 
-        Whitespace: GREY_LIGHT
+        Whitespace: WHITESPACE,
     }
