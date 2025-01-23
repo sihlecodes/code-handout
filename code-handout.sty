@@ -6,32 +6,24 @@
 \usepackage{fancyhdr}
 \usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
 
-\newcommand{\handouttitle}{Title}
-\newcommand{\sethandouttitle}[1]{\renewcommand{\handouttitle}{#1}}
-
-\newcommand{\handoutauthor}{Author}
-\newcommand{\sethandoutauthor}[1]{\renewcommand{\handoutauthor}{#1}}
-
 \AtBeginDocument {
-	\section*{\handouttitle}
+	\section*{\@title}
 }
 
-\newcommand{\smallfont}{
-\fontsize{8}{11}\selectfont
-}
 
 \fancyfootoffset[lhr]{8mm}
 
+\newcommand{\footerfont}{\fontsize{8}{10}\selectfont\textcolor{gray}}
 \newcommand{\customfooter}{
 	\fancyhf{} % clear all header and footer fields
-	\fancyfoot[R]{\smallfont \textcolor{gray}{\thepage}}
-	\fancyfoot[L]{\smallfont \textcolor{gray}{\handoutauthor}}
+	\fancyfoot[R]{\footerfont{\thepage}}
+	\fancyfoot[L]{\footerfont{\@author}}
 }
 
-\fancypagestyle{first} {\customfooter}
+\fancypagestyle{first}{\customfooter}
 \fancypagestyle{rest}{
 	\customfooter
-	\fancyhead[L]{\smallfont \textcolor{gray}{\handouttitle}}
+	\fancyhead[L]{\footerfont{\@title}}
 	\fancyfoot[L]{}
 }
 
