@@ -13,6 +13,9 @@
 	\section*{\@title}
 }
 
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\baselinestretch}{1.15}
+
 % remove first line paragraph indent
 \setlength{\parindent}{0mm}
 
@@ -52,24 +55,25 @@
 \pagestyle{rest}
 
 \renewcommand{\listingscaption}{}
-\renewcommand{\familydefault}{\sfdefault}
-\renewcommand{\headrulewidth}{0pt}
-
-% \AtBeginEnvironment{snugshade*}{\vspace{-\FrameSep}}
-% \AfterEndEnvironment{snugshade*}{\vspace{-\FrameSep}}
+\renewcommand{\headrulewidth}{0mm}
 
 \definecolor{background}{HTML}{fafbfc}
-
 \setminted{
 	style=handout,
 	bgcolor=background,
-	bgcolorpadding=1.2em,
+	bgcolorpadding=4.5mm,
 	tabsize=3,
 	samepage=true}
 
 % reduce space above captions
-\setlength{\abovecaptionskip}{-6.5pt} 
+\setlength{\abovecaptionskip}{-2mm}
 
 % remove numbering from minted captions
 \DeclareCaptionLabelFormat{nolabel}{}
-\captionsetup[listing]{labelformat=nolabel, justification=raggedright, singlelinecheck=false, size=small, font={color=gray}}
+
+\captionsetup[listing]{
+	labelformat=nolabel,
+	justification=raggedright,
+	singlelinecheck=false,
+	size=small,
+	font={color=gray}}
