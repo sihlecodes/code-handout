@@ -4,6 +4,7 @@
 \usepackage{minted}
 \usepackage{caption}
 \usepackage{fancyhdr}
+\usepackage{enumitem}
 \usepackage{sectsty}
 \usepackage{titlesec}
 \usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
@@ -11,6 +12,16 @@
 \AtBeginDocument {
 	\section*{\@title}
 }
+
+% remove first line paragraph indent
+\setlength{\parindent}{0mm}
+
+% remove left indent inside lists using enumerate or itemize
+\setlist[enumerate,1]{left=0mm}
+\setlist[itemize,1]{left=0mm}
+
+\BeforeBeginEnvironment{listing}{\addvspace{-1mm}}
+\AfterEndEnvironment{listing}{\addvspace{-1mm}}
 
 \titlespacing*{\section}{0pt}{0pt}{0.5mm}
 \titlespacing*{\subsection}{0pt}{0pt}{8mm}
