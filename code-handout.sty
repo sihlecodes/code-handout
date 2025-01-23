@@ -4,12 +4,22 @@
 \usepackage{minted}
 \usepackage{caption}
 \usepackage{fancyhdr}
+\usepackage{sectsty}
+\usepackage{titlesec}
 \usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
 
 \AtBeginDocument {
 	\section*{\@title}
 }
 
+\titlespacing*{\section}{0pt}{0pt}{0.5mm}
+\titlespacing*{\subsection}{0pt}{0pt}{8mm}
+
+\definecolor{sectioncolor}{HTML}{8d6bea}
+\definecolor{subsectioncolor}{HTML}{77c0cf}
+
+\sectionfont{\color{sectioncolor}\fontsize{22}{20}\selectfont}
+\subsectionfont{\color{subsectioncolor}\fontsize{14}{10}\selectfont}
 
 \fancyfootoffset[lhr]{8mm}
 
