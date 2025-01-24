@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "handout" # change this to a package name for your plugin
-version = "0.0.2"
+version = "0.1.0"
 dependencies = ["pygments"]
 # readme = "README.md"
 
@@ -12,13 +12,7 @@ dependencies = ["pygments"]
 packages = ["."]
 
 [project.entry-points."pygments.lexers"]
-csharp_handout = "code-handout-lexers:ImprovedCSharpLexer"
-
-# [project.entry-points."pygments.formatters"]
-# handout = "code-handout-formatter:HandoutFormatter"
+csharp_handout = "code_handout_lexers:ImprovedCSharpLexer"
 
 [project.entry-points."pygments.styles"]
-handout = "code-handout-style:HandoutStyle"
-
-# [project.entry-points."pygments.filters"]
-# handout = "code-handout-filter:HandoutFilter"
+handout = "code_handout_style:HandoutStyle"
