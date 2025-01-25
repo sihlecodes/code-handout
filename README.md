@@ -42,8 +42,8 @@ The package includes a bunch of useful packages, with `minted` being one of them
 \documentclass{article}
 \usepackage{code-handout}
 
-\sethandouttitle{Insert title}
-\sethandoutauthor{Insert your name or leave this blank}
+\title{Insert title}
+\author{Insert your name or leave this blank}
 
 % If you haven't installed the pygments-plugin uncomment the following
 % \usemintedstyle{default}
@@ -59,7 +59,7 @@ The package includes a bunch of useful packages, with `minted` being one of them
 
 \end{document}
 ```
-The package automatically adds a `\section*` with the handout title to the document.
+The package automatically adds a `\section*` with the document title on the first page.
 
 ### Improved Lexers
 The improved lexers included with the pygments plugin can be used by adding `x` to the normal aliases of a language.
