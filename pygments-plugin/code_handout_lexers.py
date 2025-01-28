@@ -6,8 +6,8 @@ from pygments.lexer import RegexLexer, bygroups, \
 from pygments.token import Punctuation, Text, Comment, Operator, Keyword, \
     Name, String, Number, Literal, Other, Whitespace
 from pygments.util import get_choice_opt
-
 from pygments.lexers.dotnet import CSharpLexer
+
 
 def extend_at(index, self, elements):
     for i, e in enumerate(elements):
@@ -25,7 +25,10 @@ class ImprovedCSharpLexer(RegexLexer):
 
     for levelname, cs_ident in CSharpLexer.levels.items():
         context = tokens[levelname]['root']
-        context.insert(1, (r'"', String, 'string'))
+        context.insert(1, ('"', String, 'string'))
+        context.insert(1, (r'false|true|null', Keyword.Other))
+        context.insert(1, (r'^(\s*)(\[)',
+                           bygroups(Whitespace, Punctuation), 'attribute'))
 
         extend_at(len(context)-1, context, [
             (fr'({cs_ident})([\[\]\?]*)(\s+)({cs_ident})(\s*)(;)',
@@ -39,6 +42,17 @@ class ImprovedCSharpLexer(RegexLexer):
             (fr'({cs_ident})(\s*)(\()',
              bygroups(Name.Function, Whitespace, Punctuation)),
         ])
+
+        tokens[levelname]['attribute'] = [
+            ('"', String, 'string'),
+            ('=', Operator),
+            (r"[0-9]+(\.[0-9]*)?([eE][+-][0-9]+)?"
+             r"[flFLdD]?|0[xX][0-9a-fA-F]+[Ll]?", Number),
+            ('false|true|null', Keyword.Other),
+            (cs_ident, Name.Attribute),
+            (r'[^]]', Text),
+            (r'\]', Punctuation, '#pop')
+        ]
 
         tokens[levelname]['string'] = [
             (r'\\.', String.Escape),

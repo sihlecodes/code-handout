@@ -15,9 +15,10 @@ STRING        = '#91b138'
 STRING_ESCAPE = '#77bca8'
 NUMBER        = '#9872cd'
 OPERATOR      = '#e98d48'
+OTHER         = '#eb6c6c'
 
 UNDEFINED     = '#ff0000'
-ATTRIBUTE     = UNDEFINED
+ATTRIBUTE     = TYPE
 STRING_OTHER  = UNDEFINED
 TAG           = UNDEFINED
 
@@ -42,8 +43,9 @@ class HandoutStyle(Style):
         Keyword: f'{KEYWORD}',
         Keyword.Pseudo: 'nobold',
         Keyword.Type: PRIMITIVE,
+        Keyword.Other: OTHER,
 
-        Name.Attribute: f'italic {ATTRIBUTE}',
+        Name.Attribute: f'{ATTRIBUTE}',
         Name.Builtin: f'{FUNCTION}',
         Name.Class: f'{TYPE}',
         Name.Constant: TYPE,
