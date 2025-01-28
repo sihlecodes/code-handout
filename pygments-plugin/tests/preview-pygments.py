@@ -1,17 +1,18 @@
 from pygments import highlight
-from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 
-from pygments.style import Style
-from pygments.token import (
-    Comment, Error, Generic, Name,
-    Number, Operator, String, Text,
-    Whitespace, Keyword)
-
-from handout_lexers import ImprovedCSharpLexer
-from handout_style import HandoutStyle
-
 import os
+
+# Prefer packages in the parent directory
+try:
+    import sys
+    sys.path.insert(0, '..')
+
+    from code_handout_lexers import ImprovedCSharpLexer
+    from code_handout_style import HandoutStyle
+except ImportError:
+    exit(1)
+
 
 code = r'''
 namespace Test {
@@ -19,17 +20,20 @@ namespace Test {
         public static int NUMBER_OF_VIEWS = 0;
         public string Name;
 
-        [Note(name = "Helper class")]
+        [Note(name = "\bHelper class\u89", iterations = 2)]
         interface IKiller {
-            void kill();
         }
 
+        [Serializable("UINT16")]
+        [Stubs(generate = false)]
         public static void Main(string[] args) {
             Random? random = new Random();
+            Name test = null;
             Garbage.Name[] names;
             string[] names = {"\bGugu\u", "Hop\e", "Ntombi\n", "Sbahle", "Mandisa"}
 
             const int COUNT = 10;
+            bool flag = false;
 
             using (Random rand = new Random()) {
                 Console.WriteLine(rand.Next(21));
