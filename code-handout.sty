@@ -1,4 +1,6 @@
 \ProvidesPackage{code-handout}
+
+\usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
 \usepackage{helvet}
 \usepackage[svgnames]{xcolor}
 \usepackage{minted}
@@ -7,10 +9,11 @@
 \usepackage{enumitem}
 \usepackage{sectsty}
 \usepackage{titlesec}
-\usepackage[left=24mm, right=25mm, top=25mm, bottom=25mm]{geometry}
+\usepackage{ifthen}
 
 \AtBeginDocument {
-	\section*{\@title}
+	% add a section with title if title is specified
+	\ifthenelse{\not\equal{\@title}{}}{\section*{\@title}}{}
 }
 
 \renewcommand{\familydefault}{\sfdefault}
@@ -26,7 +29,7 @@
 \BeforeBeginEnvironment{listing}{\addvspace{-1mm}}
 \AfterEndEnvironment{listing}{\addvspace{-1mm}}
 
-\titlespacing*{\section}{0pt}{0pt}{0.5mm}
+\titlespacing*{\section}{0pt}{0pt}{1.5mm}
 \titlespacing*{\subsection}{0pt}{0pt}{8mm}
 
 \definecolor{sectioncolor}{HTML}{8d6bea}
